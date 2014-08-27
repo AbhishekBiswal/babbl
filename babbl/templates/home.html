@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block content %}
+
+	<!-- Make sure all your bars are the first things in your <body> -->
+    <header class="bar bar-nav">
+    	<a href="/new/{{ room.id }}/{{ room.slug }}" class="icon icon-compose pull-right" data-transition="slide-in"></a>
+    	<a class="icon icon-gear pull-left"></a>
+     	<h1 class="title"><img class="logo" src="/static/img/logo.png"></h1>
+    </header>
+
+    <div class="content">
+
+    	    <div class="content-padded">
+    	    {% for room in db.session.query(Rooms).filter_by(id=room.id) %}
+    	    	<h3 class="page-title">{{ room.name }}</h3>
+    	    {% endfor %}
+		    	<div class="segmented-control">
+		          <a class="control-item active" href="#item1mobile">
+		            Popular
+		          </a>
+		          <a class="control-item" href="#item2mobile">
+		            Recent
+		          </a>
+		        </div>
+		    </div>
+
+		<div id="item1mobile" class="control-content active">
+
+			<div class="bcards">
+
+			{% for post in db.session.query(Posts).filter_by(room=room.id, hidden=0).order_by(Posts.comments.desc()) %}
+    		
+    		<div class="bcard {{ post.color }}">
+    			<p class="bcard-title">{{ post.post_title }}</p>
+
+    			<p class="bcard-content">{{ post.post_content }}</p>
+
+    			{% for x in db.session.query(Rooms).filter_by(id=post.room) %}
+	    			<p class="at">@ {{ x.name }}</p>
+	    		{% endfor %}
+
+    			<div class="controls">
+    				<a href="/p/{{ post.id }}"><i class="fa fa-comments"></i></a>
+    			</div>
+
+    		</div>
+    	{% endfor %}
+
+	    	</div>
+
+		</div>
+
+    	<div id="item2mobile" class="control-content">
+    	
+    	<div class="bcards">
+
+    	{% for post in db.session.query(Posts).filter_by(room=room.id, hidden=0).order_by(Posts.when.desc()) %}
+	    		
+	    		<div class="bcard {{ post.color }}">
+	    			<p class="bcard-title">{{ post.post_title }}</p>
+
+	    			<p class="bcard-content">{{ post.post_content }}</p>
+
+	    			{% for x in db.session.query(Rooms).filter_by(id=post.room) %}
+		    			<p class="at">@ {{ x.name }}</p>
+		    		{% endfor %}
+
+	    			<div class="controls">
+	    				<a href="/p/{{ post.id }}"><i class="fa fa-comments"></i></a>
+	    			</div>
+
+	    		</div>
+	    	{% endfor %}
+
+    	</div>
+
+    	</div>
+
+    </div>
+
+{% endblock %}

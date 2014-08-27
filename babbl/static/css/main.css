@@ -1,46 +1,27 @@
-
-.masthead {
-	padding: 30px 0 30px;
-	margin-bottom: 0;
+body
+{
+	margin: 0;
+	padding: 0;
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
+	color: #333;
 }
-
-.masthead h1 {
-	font-size: 75px;
-	line-height: 1;
-	letter-spacing: -2px;
-	font-weight: bold;
+header
+{
+	min-height: 400px;
+	color: #fff;
+	padding-top: 50px; 
+	background: rgba(73,155,234,1);
+	background: -moz-radial-gradient(center, ellipse cover, rgba(73,155,234,1) 0%, rgba(32,124,229,1) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, , color-stop(0%, rgba(73,155,234,1)), color-stop(100%, rgba(32,124,229,1)));
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(73,155,234,1) 0%, rgba(32,124,229,1) 100%);
+	background: -o-radial-gradient(center, ellipse cover, rgba(73,155,234,1) 0%, rgba(32,124,229,1) 100%);
+	background: -ms-radial-gradient(center, ellipse cover, rgba(73,155,234,1) 0%, rgba(32,124,229,1) 100%);
+	background: radial-gradient(ellipse at center, rgba(73,155,234,1) 0%, rgba(32,124,229,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#207ce5', GradientType=1 );
 }
-
-.header-section {
-	padding: 50px 0;
-	background: #222;
-	position: absolute;
-	top: 40px;
-	left: 0px;
-	width: 100%;
-	padding-left: 0;
-	margin-left: 0;
-	color: #FFF;
-}
-
-.header-row {
-	width: 960px;
-	margin: auto;
-}
-
-.header-push {
-	height: 370px;
-}
-
-.main {
-	padding-top: 20px;
-	min-height: 370px;
-}
-
-.footer-left {
-	float: left;
-}
-
-.footer-right {
-	float: right;
+header h2
+{
+	text-shadow: 0 0 10px rgba(0,0,0,0.6);
+	font-weight: normal;
+	font-size: 300%;
 }

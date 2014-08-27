@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+	<!-- Make sure all your bars are the first things in your <body> -->
+    <header class="bar bar-nav">
+    	<a href="/{{ room.slug }}" class="icon icon-left pull-left" data-transition="slide-out"></a>
+    	<a href="/new/{{ post.room }}" class="icon icon-compose pull-right" data-transition="slide-in"></a>
+     	<h1 class="title">Post</h1>
+    </header>
+
+    <div class="content">
+    	
+    <div class="bcards">
+    	
+    	<div class="bcard {{ post.color }}">
+    		
+    		<p>{{ post.post_content }}</p>
+
+    		{% for x in db.session.query(Rooms).filter_by(id=post.room) %}
+    			<p class="at">@ {{ x.name }}</p>
+    		{% endfor %}
+
+    	</div>
+
+    </div>
+
+    <div class="comments table-view">
+     <li class="table-view-divider">Comments</li>
+    	{% for item in db.session.query(Comments).filter_by(p_id=post.id) %}
+
+    		<li class="table-view-cell">{{ item.content }}</li>
+
+    	{% endfor %}
+    </div>
+
+    <!-- Block button in standard bar fixed above the footer -->
+		<div class="bar bar-standard bar-footer">
+		  <a href="#comment" class="btn btn-block btn-primary">Add a new comment</a>
+		</div>
+
+
+    </div>
+
+    <div id="comment" class="modal">
+	  <header class="bar bar-nav">
+	    <a class="icon icon-close pull-right" href="#comment"></a>
+	    <h1 class="title">New Comment</h1>
+	  </header>
+
+	  <div class="content content-padded">
+	    <h3>Add your Anonymous Comment</h3>
+	    <form action="/p/comment" method="post">
+		  <input type="hidden" name="pid" value="{{ post.id }}">
+		  <textarea rows="5" name="comment" placeholder="Your Comment"></textarea>
+		  <button class="btn btn-positive btn-block">Comment</button>
+		</form>
+	  </div>
+	</div>
+
+{% endblock %}

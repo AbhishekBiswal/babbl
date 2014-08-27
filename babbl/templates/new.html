@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Make sure all your bars are the first things in your <body> -->
+    <header class="bar bar-nav">
+      <a href="{{ to }}" class="icon icon-left pull-left" data-transition="slide-out"></a>
+      <h1 class="title"><i class="fa fa-plus"></i> Add New Post</h1>
+    </header>
+
+    <div class="content content-padded">
+
+        <div class="segmented-control">
+          <a class="control-item active" href="#item1mobile">
+            Short Post
+          </a>
+          <a class="control-item" href="#item2mobile">
+            Long Post
+          </a>
+        </div>
+
+        <div class="car">
+
+          <div id="item1mobile" class="control-content active">
+            <br>
+              <form action="/new/sub" method="post">
+                <input type="hidden" name="id" value="{{ id }}">
+                <input type="hidden" name="post" value="short"> 
+                <textarea rows="5" name="content" placeholder="Write Something."></textarea>
+                <label>Select a Color:</label>
+                <select name="color">
+                  <option name="red">Red</option>
+                  <option name="blue">Blue</option>
+                  <option name="green">Green</option>
+                  <option name="black">Black</option>
+                </select>
+                <input type="submit" class="btn btn-positive btn-block" value="Post It">
+              </form>
+
+          </div>
+
+          <span id="item2mobile" class="control-content">
+            <br>
+              <h1>Coming Soon. :)</h1>
+          </span>
+
+        </div>
+
+    </div>
+
+{% endblock %}
