@@ -35,6 +35,12 @@
 	color: #fff;
 	margin-bottom: 12px;
 }
+
+.bcard-content
+{
+	padding: 10px 0;
+}
+
 .bcard .controls
 {
 	text-align: center;
@@ -78,7 +84,7 @@
 
 .controls a
 {
-	font-size: 80%;
+	font-size: 90%;
 }
 
 .loading
